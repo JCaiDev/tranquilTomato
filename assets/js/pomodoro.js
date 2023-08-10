@@ -14,9 +14,9 @@ class PomodoroTimer {
 
 		// Timer intervals and state
 		this.intervalId = null;
-		this.workDuration = 25 * 60; // 25 minutes in seconds
-		this.shortBreakDuration = 5 * 60; // 5 minutes in seconds
-		this.longBreakDuration = 15 * 60; // 15 minutes in seconds
+		this.workDuration = 5; // 25 minutes in seconds
+		this.shortBreakDuration = 3; // 5 minutes in seconds
+		this.longBreakDuration = .1 * 60; // 15 minutes in seconds
 		this.currentDuration = this.workDuration;
 
 		// State flags
@@ -37,7 +37,7 @@ class PomodoroTimer {
 	init() {
 		this.startButton.addEventListener('click', this.toggleTimer.bind(this));
 		this.resetButton.addEventListener('click', this.resetTimer.bind(this));
-		document.querySelector('.modal-close').addEventListener('click', this.closeModal.bind(this)); // Listen for close click
+		document.querySelector('.modal').addEventListener('click', this.closeModal.bind(this)); // Listen for close click
 
 		this.updateTimer();
 	}
@@ -75,7 +75,7 @@ class PomodoroTimer {
 		if (this.isRunning) {
 			if (this.isWorkPeriod) {
 				this.startButton.textContent = 'Pause Work';
-			} else if (this.workCounter >= 4) {
+			} else if (this.workCounter === 4) {
 				this.startButton.textContent = 'Pause Long Break';
 			} else {
 				this.startButton.textContent = 'Pause Short Break';
@@ -83,7 +83,7 @@ class PomodoroTimer {
 		} else {
 			if (this.isWorkPeriod) {
 				this.startButton.textContent = 'Start Work';
-			} else if (this.workCounter >= 4) {
+			} else if (this.workCounter === 4) {
 				this.startButton.textContent = 'Start Long Break';
 			} else {
 				this.startButton.textContent = 'Start Short Break';
@@ -131,7 +131,7 @@ class PomodoroTimer {
 	decreaseTimer(elapsedTime) {
 		if (this.isWorkPeriod) {
 			this.currentDuration = this.workDuration - elapsedTime;
-		} else if (this.workCounter >= 4) {
+		} else if (this.workCounter === 4) {
 			this.currentDuration = this.longBreakDuration - elapsedTime;
 		} else {
 			this.currentDuration = this.shortBreakDuration - elapsedTime;
@@ -158,11 +158,11 @@ class PomodoroTimer {
 		let message = document.getElementById('transition-message');
 
 		if (this.isWorkPeriod) {
+			if (this.workCounter >=5) this.workCounter = 0
 			this.workCounter++;
-			if (this.workCounter >= 4) {
+			if (this.workCounter === 4) {
 				message.textContent = 'Time for a long break!';
 				this.currentDuration = this.longBreakDuration;
-				this.workCounter = 0;
 			} else {
 				message.textContent = 'Time for a short break!';
 				this.currentDuration = this.shortBreakDuration;
