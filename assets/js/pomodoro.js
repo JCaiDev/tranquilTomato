@@ -14,9 +14,9 @@ class PomodoroTimer {
 
 		// Timer intervals and state
 		this.intervalId = null;
-		this.workDuration = 5; // 25 minutes in seconds
-		this.shortBreakDuration = 3; // 5 minutes in seconds
-		this.longBreakDuration = .1 * 60; // 15 minutes in seconds
+		this.workDuration = 25 * 60; // 25 minutes in seconds
+		this.shortBreakDuration = 5 * 60; // 5 minutes in seconds
+		this.longBreakDuration = 15 * 60; // 15 minutes in seconds
 		this.currentDuration = this.workDuration;
 
 		// State flags
