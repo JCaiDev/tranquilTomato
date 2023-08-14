@@ -16,7 +16,6 @@ export async function getApi() {
   
   const response = await fetch(url);
   var data = await response.json();
-  console.log(data);
 
 //new background photo in css #banner
   const newBannerImg = document.querySelector('#banner');

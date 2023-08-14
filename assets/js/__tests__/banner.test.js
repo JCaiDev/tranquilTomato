@@ -5,7 +5,7 @@
 // This is a mock response that matches the structure that getApi expects
 const mockResponse = {
       "urls": {
-        "regular": "someurl.com"
+        "regular": 'someurl.com'
       }
     };
   
@@ -43,7 +43,7 @@ const mockResponse = {
     await new Promise((resolve) => setTimeout(resolve, 0));
     
 
-    expect(document.querySelector("#banner").style.backgroundImage).toBe('url(someurl.com)');
+    expect(document.querySelector("#banner").style.backgroundImage).toBe("url(someurl.com)");
 
 
   });
