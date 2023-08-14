@@ -1,11 +1,11 @@
 //Fetch new image for banner from unsplash
 
 
-document.querySelector('#newbanner').addEventListener('click', getapi);
+document.querySelector('#newbanner').addEventListener('click', getApi);
 
 
 
-async function getapi() {
+export async function getApi() {
   
   const accessKey = '28N_0VxecOyXyStioo_gwULRjjNHDal3MTM63aLFWKw'
 
