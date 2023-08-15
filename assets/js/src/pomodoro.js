@@ -25,7 +25,7 @@ export class PomodoroTimer {
 		this.workCounter = 0;
 
 		// Sound setup
-		this.bellSound = new Audio('assets/sounds/deep.mp3'); // Preload the bell sound
+		this.bellSound = new Audio('assets/sounds/high.mp3'); // Preload the bell sound
 
 		// Initialization
 		this.init();
@@ -118,7 +118,7 @@ export class PomodoroTimer {
             clearInterval(this.intervalId);
             this.isRunning = false;
         } else {
-            // this.playSound(); // Play sound when starting the timer
+            this.playSound(); // Play sound when starting the timer
             this.startTimer();
         }
         this.updateStartButton();
@@ -152,7 +152,7 @@ export class PomodoroTimer {
 		this.isRunning = false;
 		clearInterval(this.intervalId);
 
-		// this.playSound(); // play the bell sound
+		this.playSound(); // play the bell sound
 
 		let modal = document.getElementById('transition-modal');
 		let message = document.getElementById('transition-message');
